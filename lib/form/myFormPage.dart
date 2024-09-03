@@ -15,33 +15,38 @@ class _MyFormPageState extends State<MyFormPage> {
   final TextEditingController _companyController = TextEditingController();
 
   void _sendEmail(String name, String email) async {
-     String username = dotenv.env['EMAIL']!;
+    String username = dotenv.env['EMAIL']!;
     String password = dotenv.env['PASSWORD']!;
     // Configure the SMTP server using the provided server details
-   final smtpServer = SmtpServer(
-    'leadingedgebranding.com',
-    port: 465,
-    username: username,
-    password: password,
-    ssl: true,
-  );
+    final smtpServer = SmtpServer(
+      'smtp.leadingedgebranding.com', // Ensure this is the correct SMTP server hostname
+      port: 587, // Try port 587 for TLS
+      username: username,
+      password: password,
+      ssl: false, // Set to false if using port 587
+      ignoreBadCertificate:
+          true, // Set to true if the server's certificate is self-signed or not recognized
+    );
 
-  final message = Message()
-    ..from = Address(username, 'admin@leadingedgebranding.com') // This should be an email allowed by the SMTP server
-    ..recipients.add(dotenv.env['RECIPIENTEMAIL']!) // Send to this email
-    ..subject = 'New Form Submission'
-    ..text = 'Name: $name\nEmail: $email\nCompany: ${_companyController.text}';
+    final message = Message()
+      ..from = Address(username,
+          'color') // This should be an email allowed by the SMTP server
+      ..recipients.add(dotenv.env['RECIPIENTEMAIL']!) // Send to this email
+      ..subject = 'New Form Submission'
+      ..text =
+          'Name: $name\nEmail: $email\nCompany: ${_companyController.text}';
 
-  try {
-    final sendReport = await send(message, smtpServer);
-    print('Message sent: ' + sendReport.toString());
-  } on MailerException catch (e) {
-    print('Message not sent. \n' + e.toString());
-    for (var p in e.problems) {
-      print('Problem: ${p.code}: ${p.msg}');
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: ' + sendReport.toString());
+    } on MailerException catch (e) {
+      print('Message not sent. \n' + e.toString());
+      for (var p in e.problems) {
+        print('Problem: ${p.code}: ${p.msg}');
+      }
     }
   }
-}
+
   @override
   Widget build(BuildContext context) {
     return Form(

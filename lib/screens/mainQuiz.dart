@@ -1,4 +1,3 @@
-
 import 'package:colorquizapp/components/imageTile.dart';
 import 'package:colorquizapp/main.dart';
 import 'package:colorquizapp/quizData/quizAnswerData.dart';
@@ -16,7 +15,8 @@ class MainQuiz extends StatefulWidget {
 class _MainQuizState extends State<MainQuiz> {
   int currentQuestionIndex = 0;
   int? selectedAnswerId;
-  Map<int, MainAnswer> selectedAnswers = {}; // Map to store selected answers for each question
+  Map<int, MainAnswer> selectedAnswers =
+      {}; // Map to store selected answers for each question
 
   void _onAnswerSelected(MainAnswer answer) {
     setState(() {
@@ -53,14 +53,16 @@ class _MainQuizState extends State<MainQuiz> {
     String username = dotenv.env['EMAIL']!;
     String password = dotenv.env['PASSWORD']!;
 
-
     final smtpServer = SmtpServer(
-        'leadingedgebranding.com',
-        port: 465,
-        username: username,
-        password: password,
-        ssl: true,
-      );
+      'smtp.leadingedgebranding.com', // Ensure this is the correct SMTP server hostname
+      port: 587, // Try port 587 for TLS
+      username: username,
+      password: password,
+      ssl: false, // Set to false if using port 587
+      ignoreBadCertificate:
+          true, // Set to true if the server's certificate is self-signed or not recognized
+    );
+
     // Formatting the selected answers into a readable format
     String formattedAnswers = selectedAnswers.entries.map((entry) {
       int questionIndex = entry.key;
@@ -70,7 +72,7 @@ class _MainQuizState extends State<MainQuiz> {
 
     final message = Message()
       ..from = Address(username, 'Color Quiz App')
-      ..recipients.add(dotenv.env['RECIPIENTEMAIL']!) 
+      ..recipients.add(dotenv.env['RECIPIENTEMAIL']!)
       ..subject = 'Quiz Results'
       ..text = 'Here are the selected quiz answers:\n\n$formattedAnswers';
 

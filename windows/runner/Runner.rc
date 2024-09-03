@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "colorquizapp" "\0"
+            VALUE "FileDescription", "Leading Edge Branding Color Quiz" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "colorquizapp" "\0"
+            VALUE "InternalName", "Leading Edge Branding Color Quiz" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "colorquizapp.exe" "\0"
-            VALUE "ProductName", "colorquizapp" "\0"
+            VALUE "ProductName", "Leading Edge Branding Color Quiz" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

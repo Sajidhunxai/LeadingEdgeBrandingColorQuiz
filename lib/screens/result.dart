@@ -113,7 +113,7 @@ class ResultScreen extends StatelessWidget {
             SizedBox(height: 20),
 
             // Thank You Note
-            Text(
+            const Text(
               "We look forward to seeing you soon.",
               style: TextStyle(
                 fontFamily: 'Verdana',

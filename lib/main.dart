@@ -1,8 +1,20 @@
+import 'dart:io';
+
 import 'package:colorquizapp/screens/homeScreen.dart';
 import 'package:colorquizapp/screens/mainQuiz.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  print('Current directory: ${Directory.current.path}');
+
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    print('Error loading .env file: $e');
+  }
+    await dotenv.load(fileName: ".env");
+
   runApp(MyApp());
 }
 
