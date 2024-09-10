@@ -17,7 +17,6 @@ class MainAnswer {
     required this.nextQuestionIndex,
   });
 }
-
 class Question {
   final String questionText;
   final questionImage;
