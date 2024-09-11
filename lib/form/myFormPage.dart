@@ -1,3 +1,4 @@
+import 'package:colorquizapp/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mailer/mailer.dart';
@@ -49,75 +50,98 @@ class _MyFormPageState extends State<MyFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            controller: _nameController,
-            decoration: const InputDecoration(
-              labelText: 'Name',
-            ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your name';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16),
-          TextFormField(
-            controller: _emailController,
-            decoration: InputDecoration(
-              labelText: 'Email',
-            ),
-            keyboardType: TextInputType.emailAddress,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your email';
-              } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                return 'Please enter a valid email address';
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 16),
-          TextFormField(
-            controller: _companyController,
-            decoration: const InputDecoration(
-              labelText: 'Company/Organization',
-            ),
-          ),
-          SizedBox(height: 24),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    // Send the email
-                    _sendEmail(_nameController.text, _emailController.text);
-
-                    // Navigate to the quiz page
-                    Navigator.pushNamed(context, "/quiz");
-                  }
-                },
-                child: Text('Click Here To Begin!'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF3F2684),
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12), // Border radius
+    return Container(
+      padding: const EdgeInsets.all(6.0),
+      decoration:
+          BoxDecoration(border: Border.all(color: AppConstants.secondaryColor)),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              controller: _nameController,
+              decoration: const InputDecoration(
+                border:  OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppConstants
+                        .secondaryColor, // Use dynamic value without const
                   ),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 16, horizontal: 100), // Padding
                 ),
+                labelText: 'Name',
               ),
-            ],
-          )
-        ],
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your name';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              controller: _emailController,
+              decoration: const InputDecoration(
+                   border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppConstants
+                        .secondaryColor, // Use dynamic value without const
+                  ),
+                ),
+                labelText: 'Email',
+              ),
+              keyboardType: TextInputType.emailAddress,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your email';
+                } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+                  return 'Please enter a valid email address';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              controller: _companyController,
+              decoration: const InputDecoration(
+                   border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppConstants
+                        .secondaryColor, // Use dynamic value without const
+                  ),
+                ),
+                labelText: 'Company/Organization',
+              ),
+            ),
+            const SizedBox(height: 24),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      // Send the email
+                      _sendEmail(_nameController.text, _emailController.text);
+
+                      // Navigate to the quiz page
+                      Navigator.pushNamed(context, "/quiz");
+                    }
+                  },
+                  child: const Text('Click Here To Begin!'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF3F2684),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12), // Border radius
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16, horizontal: 100), // Padding
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

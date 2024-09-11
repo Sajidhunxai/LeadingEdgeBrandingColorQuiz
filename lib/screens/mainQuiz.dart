@@ -1,4 +1,5 @@
 import 'package:colorquizapp/components/imageTile.dart';
+import 'package:colorquizapp/constants/constants.dart';
 import 'package:colorquizapp/main.dart';
 import 'package:colorquizapp/quizData/quizAnswerData.dart';
 import 'package:colorquizapp/screens/result.dart';
@@ -89,50 +90,72 @@ class _MainQuizState extends State<MainQuiz> {
     Question currentQuestion = questions[currentQuestionIndex];
 
     return BaseScaffold(
-      title: "",
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Text(
-                  currentQuestion.questionText,
-                  style: const TextStyle(fontSize: 18),
+        title: "",
+        body: Padding(
+          padding: EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Text(
+                      currentQuestion.questionText,
+                      textAlign: TextAlign.center,
+                      style: AppConstants.heading3TextStyle,
+                    ),
+                    currentQuestion.questionImage != null
+                        ? Image.asset(currentQuestion.questionImage!)
+                        : SizedBox.shrink(),
+                  ],
                 ),
-                currentQuestion.questionImage != null
-                    ? Image.asset(currentQuestion.questionImage!)
-                    : SizedBox.shrink(),
-              ],
-            ),
-          ),
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, // Number of tiles in each row
-                childAspectRatio: 3 / 4, // Aspect ratio of the tiles
               ),
-              itemCount: currentQuestion.answers.length,
-              itemBuilder: (context, index) {
-                final answer = currentQuestion.answers[index];
-                return ImageTile(
-                  imageUrl: answer.imageUrl,
-                  text: answer.text,
-                  isSelected: selectedAnswerId == answer.id,
-                  onTap: () {
-                    _onAnswerSelected(answer);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(answer.moreInfo),
-                      ),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, // Number of tiles in each row
+                    mainAxisSpacing: 6,
+                    crossAxisSpacing: 6,
+                    childAspectRatio: 1 / 1, // Aspect ratio of the tiles
+                  ),
+                  itemCount: currentQuestion.answers.length,
+                  itemBuilder: (context, index) {
+                    final answer = currentQuestion.answers[index];
+                    return ImageTile(
+                      imageUrl: answer.imageUrl,
+                      text: answer.text,
+                      isSelected: selectedAnswerId == answer.id,
+                      onTap: () {
+                        _onAnswerSelected(answer);
+  if (answer.moreInfo.isNotEmpty) {
+
+                        // Display a pop-up dialog instead of a SnackBar
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('More Information'),
+                              content: Text(answer.moreInfo),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('Close'),
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pop(); // Close the dialog
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+  }
+                      },
                     );
                   },
-                );
-              },
-            ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }

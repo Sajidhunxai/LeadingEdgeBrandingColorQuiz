@@ -1,6 +1,7 @@
 import 'package:colorquizapp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:colorquizapp/quizData/quizAnswerData.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResultScreen extends StatelessWidget {
   final List<Question> questions;
@@ -64,12 +65,9 @@ class ResultScreen extends StatelessWidget {
             SizedBox(height: 20),
 
             // Image
-            Image.network(
-              'https://mlgexgsh0aao.i.optimole.com/w:auto/h:auto/q:mauto/f:best/ig:avif/https://leadingedgebranding.com/wp-content/uploads/2023/02/4-Season-Logo-Combo-png.png',
-              width: 322,
-              height: 322,
-              fit: BoxFit.cover,
-            ),
+            Image.asset('assets/images/4-Season-Logo-Combo-png.png',
+              height: 350, fit: BoxFit.cover),
+        
             SizedBox(height: 20),
 
             // Print/Save Reminder
@@ -149,11 +147,15 @@ class ResultScreen extends StatelessWidget {
 
             // Download Button
             ElevatedButton(
-              onPressed: () {
-                // Handle button press
+              onPressed: () async {
                 final url =
                     'https://leadingedgebranding.com/wp-content/uploads/2021/09/20-Quick-Tips-Optimizing-Virtual-Presence-2021V1.pdf';
-                // Open URL
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  // Handle the error if the URL can't be launched
+                  throw 'Could not launch $url';
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor:
