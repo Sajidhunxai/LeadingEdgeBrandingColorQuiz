@@ -11,7 +11,7 @@ void main() async {
   try {
     await dotenv.load(fileName: ".env");
   } catch (e) {
-    print('Error loadings .env file: $e');
+    print('Error loading .env file: $e');
   }
     await dotenv.load(fileName: ".env");
 
