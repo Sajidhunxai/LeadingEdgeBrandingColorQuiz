@@ -12,8 +12,8 @@ class AppConstants {
 
   // Color constants
   static const Color primaryColor = Color(0xFFff4600);
-  static const Color secondaryColor = Color(0xFF0660099);
-  static const Color backgroundColor = Color(0xFFF5F5F5);
+  static const Color secondaryColor = Color(0xFF660099);
+  static const Color backgroundColor = Color.fromARGB(255, 255, 255, 255);
   static const Color textColor = Color.fromARGB(255, 0, 0, 0);
 
   // TextStyle constants

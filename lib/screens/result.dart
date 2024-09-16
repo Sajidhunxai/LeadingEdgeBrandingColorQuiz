@@ -1,14 +1,18 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:colorquizapp/components/download_file.dart';
+import 'package:colorquizapp/constants/constants.dart';
 import 'package:colorquizapp/main.dart';
 import 'package:flutter/material.dart';
-import 'package:colorquizapp/quizData/quizAnswerData.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:colorquizapp/quizData/main_answer.dart';
 
 class ResultScreen extends StatelessWidget {
   final List<Question> questions;
   final Map<int, MainAnswer> selectedAnswers;
   final MainAnswer lastSelectedAnswer;
 
-  ResultScreen({
+  const ResultScreen({
+    super.key,
     required this.questions,
     required this.selectedAnswers,
     required this.lastSelectedAnswer,
@@ -55,19 +59,33 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
 
             // Divider
             Divider(
               thickness: 2,
               color: Color(0xFF660099), // Replace with your color
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
 
-            // Image
-            Image.asset('assets/images/4-Season-Logo-Combo-png.png',
-              height: 350, fit: BoxFit.cover),
-        
+            lastSelectedAnswer.category == "Winter"
+                ? Image.asset(
+                    'assets/images/winter.png',
+                    height: 250,
+                    fit: BoxFit.cover,
+                  )
+                : lastSelectedAnswer.category == "Spring"
+                    ? Image.asset('assets/images/spring',
+                        height: 350, fit: BoxFit.cover)
+                    : lastSelectedAnswer.category == "Autumn"
+                        ? Image.asset(
+                            'assets/images/autumn.png',
+                            height: 350,
+                            fit: BoxFit.cover)
+                        : Image.asset(
+                            'assets/images/summer.png',
+                            height: 350,
+                            fit: BoxFit.cover),
             SizedBox(height: 20),
 
             // Print/Save Reminder
@@ -146,38 +164,52 @@ class ResultScreen extends StatelessWidget {
             SizedBox(height: 20),
 
             // Download Button
-            ElevatedButton(
-              onPressed: () async {
-                final url =
-                    'https://leadingedgebranding.com/wp-content/uploads/2021/09/20-Quick-Tips-Optimizing-Virtual-Presence-2021V1.pdf';
-                if (await canLaunch(url)) {
-                  await launch(url);
-                } else {
-                  // Handle the error if the URL can't be launched
-                  throw 'Could not launch $url';
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Color.fromRGBO(255, 72, 0, 1), // Replace with your color
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-                textStyle: TextStyle(
-                  fontFamily: 'Nunito Sans',
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PDFScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppConstants.primaryColor,
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  textStyle: TextStyle(
+                    fontFamily: 'Nunito Sans',
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              child: Text(
-                "Get Your Complimentary Copy Here!",
-                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                child: Text(
+                  "Get Your Complimentary Copy Here!",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             SizedBox(height: 20),
 
-            // Divider
-            Divider(
-              thickness: 1,
-              color: Color(0xFF660099), // Replace with your color
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/home', (route) => false),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      AppConstants.secondaryColor, // Replace with your color
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  textStyle: TextStyle(
+                    fontFamily: 'Nunito Sans',
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                child: Text(
+                  "Restart",
+                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                ),
+              ),
             ),
           ],
         ),

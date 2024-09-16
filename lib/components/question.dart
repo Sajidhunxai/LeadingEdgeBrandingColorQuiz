@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:colorquizapp/components/imageTile.dart';
+import 'package:colorquizapp/components/image_tile.dart';
 
 class Question extends StatelessWidget {
   final String questionText;
@@ -8,12 +8,12 @@ class Question extends StatelessWidget {
   final ValueChanged<int> onAnswerSelected;
 
   const Question({
-    Key? key,
+    super.key,
     required this.questionText,
     required this.answers,
     required this.selectedAnswerId,
     required this.onAnswerSelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class Question extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Text(
             questionText,
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           ),
         ),
         Expanded(

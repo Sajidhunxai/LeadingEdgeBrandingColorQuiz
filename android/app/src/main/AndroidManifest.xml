@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Leading Edge Branding Color Quiz"
+        android:label="Color For Women"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
