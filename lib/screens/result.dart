@@ -68,22 +68,22 @@ class ResultScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
 
-            lastSelectedAnswer.category == "Winter"
+            lastSelectedAnswer.category == "Water"
                 ? Image.asset(
-                    'assets/images/winter.png',
+                    'assets/images/WATER.png',
                     height: 250,
                     fit: BoxFit.cover,
                   )
-                : lastSelectedAnswer.category == "Spring"
-                    ? Image.asset('assets/images/spring',
+                : lastSelectedAnswer.category == "Fire"
+                    ? Image.asset('assets/images/FIRE.png',
                         height: 350, fit: BoxFit.cover)
-                    : lastSelectedAnswer.category == "Autumn"
+                    : lastSelectedAnswer.category == "Earth"
                         ? Image.asset(
-                            'assets/images/autumn.png',
+                            'assets/images/EARTH.png',
                             height: 350,
                             fit: BoxFit.cover)
                         : Image.asset(
-                            'assets/images/summer.png',
+                            'assets/images/AIR.png',
                             height: 350,
                             fit: BoxFit.cover),
             SizedBox(height: 20),

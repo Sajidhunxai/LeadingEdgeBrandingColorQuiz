@@ -106,7 +106,6 @@
 				6989E603D9AD20322D647B27 /* Pods-RunnerTests.release.xcconfig */,
 				6368E85BC0B96190C5B2494F /* Pods-RunnerTests.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -479,7 +478,8 @@
 				DEVELOPMENT_TEAM = 89HT5RXMBY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Color Quiz LeadingEdgeBranding";
+				INFOPLIST_KEY_CFBundleDisplayName = "Color for women";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -671,7 +671,8 @@
 				DEVELOPMENT_TEAM = 89HT5RXMBY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Color Quiz LeadingEdgeBranding";
+				INFOPLIST_KEY_CFBundleDisplayName = "Color for women";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,7 +699,8 @@
 				DEVELOPMENT_TEAM = 89HT5RXMBY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Color Quiz LeadingEdgeBranding";
+				INFOPLIST_KEY_CFBundleDisplayName = "Color for women";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

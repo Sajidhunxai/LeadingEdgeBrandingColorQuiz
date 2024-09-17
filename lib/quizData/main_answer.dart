@@ -28,7 +28,7 @@ class Question {
   });
 }
 
-const category = ["Autumn", "Spring", "Winter", "Summer"];
+const category = ["Earth", "Fire", "Water", "Air"];
 
 final List<Question> questions = [
   //Question 1 index 0
@@ -168,7 +168,7 @@ final List<Question> questions = [
 
   // Option 3  No yes option Question 2 index 3
   Question(
-    questionText: 'Do You have dark hair, dark eyes and dark skin color?',
+    questionText: 'Do you have dark hair, dark eyes and dark skin color?',
     answers: [
       MainAnswer(
         id: 1,
@@ -190,7 +190,7 @@ final List<Question> questions = [
   ),
   // Option 4 Question 3 index 4
   Question(
-    questionText: 'Do You have lighter hair, eyes and skin color?',
+    questionText: 'Do you have lighter hair, eyes and skin color?',
     answers: [
       MainAnswer(
         id: 1,
@@ -216,7 +216,7 @@ final List<Question> questions = [
     answers: [
       MainAnswer(
         id: 1,
-        imageUrl: 'assets/images/eyes/lightAmber.jpg',
+        imageUrl: 'assets/images/eyes/2.LightAmber.jpg',
         text: 'Light Amber',
         moreInfo: '',
         category: category[1],
@@ -224,7 +224,7 @@ final List<Question> questions = [
       ),
       MainAnswer(
         id: 2,
-        imageUrl: 'assets/images/eyes/lightOlive.jpg',
+        imageUrl: 'assets/images/eyes/olive.jpg',
         text: 'Light Olive',
         moreInfo: '',
         category: category[1],
@@ -317,7 +317,7 @@ final List<Question> questions = [
     answers: [
       MainAnswer(
         id: 1,
-        imageUrl: 'assets/images/eyes/lightAmber.jpg',
+        imageUrl: 'assets/images/eyes/2.LightAmber.jpg',
         text: 'Light Amber',
         moreInfo: '',
         category: category[1],
@@ -325,7 +325,7 @@ final List<Question> questions = [
       ),
       MainAnswer(
         id: 2,
-        imageUrl: 'assets/images/eyes/lightOlive.jpg',
+        imageUrl: 'assets/images/eyes/olive.jpg',
         text: 'Light Olive',
         moreInfo: '',
         category: category[1],
@@ -399,11 +399,11 @@ final List<Question> questions = [
   ),
   //question 5 questtion 5 index 8
   Question(
-    questionText: 'Which best describes how light or dark your hair color is?',
+    questionText: 'Which color best represents the value level (lightness or darkness) of your hair?',
     answers: [
       MainAnswer(
         id: 1,
-        imageUrl: 'assets/images/hair/1.Black2025.png',
+        imageUrl: 'assets/images/hair/1.BlackCircle.png',
         text: 'Black',
         moreInfo: '',
         nextQuestionIndex: 11, // This leads to a different question
@@ -459,7 +459,7 @@ final List<Question> questions = [
       ),
       MainAnswer(
         id: 9,
-        imageUrl: 'assets/images/hair/10.-Light-Blonde.png',
+        imageUrl: 'assets/images/hair/9.LightBlondeCircle.png',
         text: 'Light Blonde',
         moreInfo: '',
         nextQuestionIndex: 10 // This leads to a different question
@@ -519,7 +519,7 @@ final List<Question> questions = [
       ),
       MainAnswer(
         id: 6,
-        imageUrl: 'assets/images/eyes/lightAmber.jpg',
+        imageUrl: 'assets/images/eyes/2.LightAmber.jpg',
         text: 'Light Amber',
         moreInfo: '',
         category: category[1],
@@ -527,7 +527,7 @@ final List<Question> questions = [
       ),
       MainAnswer(
         id: 7,
-        imageUrl: 'assets/images/eyes/lightOlive.jpg',
+        imageUrl: 'assets/images/eyes/olive.jpg',
         text: 'Light Olive',
         moreInfo: '',
         category: category[1],
@@ -565,7 +565,7 @@ final List<Question> questions = [
     answers: [
       MainAnswer(
         id: 1,
-        imageUrl: 'assets/images/eyes/lightAmber.jpg',
+        imageUrl: 'assets/images/eyes/2.LightAmber.jpg',
         text: 'Light Amber',
         moreInfo: '',
         category: category[1],
@@ -573,7 +573,7 @@ final List<Question> questions = [
       ),
       MainAnswer(
         id: 2,
-        imageUrl: 'assets/images/eyes/lightOlive.jpg',
+        imageUrl: 'assets/images/eyes/olive.jpg',
         text: 'Light Olive',
         moreInfo: '',
         category: category[1],
