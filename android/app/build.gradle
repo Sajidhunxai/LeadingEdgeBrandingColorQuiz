@@ -24,17 +24,25 @@ android {
         applicationId "com.colorforwomen.colorquizwomen"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
-
+    
+     signingConfigs {
+        release {
+            keyAlias 'my-key-alias'                  // Replace with your key alias
+            keyPassword 'login1122'          // Replace with the key password you set
+            storeFile file('C:/Users/hp/my-release-key.jks')  // Use the full path to your keystore file
+            storePassword 'login1122'      // Replace with the store password you set
+        }
+    }
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
         }
     }
 }
