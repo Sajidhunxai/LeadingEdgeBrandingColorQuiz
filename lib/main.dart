@@ -6,7 +6,6 @@ import 'package:logger/logger.dart';
 import 'constants/constants.dart';
 
 void main() async {
-
   var logger = Logger();
 
   try {
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: AppConstants.backgroundColor,
       ),
       home: const HomeScreen(
-        title: "Home Screen",
+        title: 'home',
       ),
       routes: {
         '/home': (context) => const HomeScreen(
@@ -50,7 +49,10 @@ class BaseScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
 
   const BaseScaffold(
-      {super.key, required this.title, required this.body, this.floatingActionButton});
+      {super.key,
+      required this.title,
+      required this.body,
+      this.floatingActionButton});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +60,7 @@ class BaseScaffold extends StatelessWidget {
       canPop: true,
       child: Scaffold(
         appBar: AppBar(
-          toolbarHeight:120, 
+          toolbarHeight: 120,
           automaticallyImplyLeading: false,
           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           title: Center(
